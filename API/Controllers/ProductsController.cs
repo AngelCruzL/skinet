@@ -23,8 +23,8 @@ public class ProductsController : ControllerBase
   }
 
   [HttpGet("{id}")]
-  public string GetProduct(int id)
+  public async Task<ActionResult<Product>> GetProduct(int id)
   {
-    return $"GetProducts {id}";
+    return await _context.Products.FindAsync(id);
   }
 }
