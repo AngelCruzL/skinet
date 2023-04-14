@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CoreModule } from 'src/app/core/core.module';
+import { CoreModule } from '@core/core.module';
+import { ShopModule } from '@shop/shop.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
+    ShopModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
