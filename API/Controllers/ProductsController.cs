@@ -1,4 +1,5 @@
 using API.Dtos;
+using API.Errors;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
@@ -30,6 +31,7 @@ public class ProductsController : BaseApiController
   }
 
   [HttpGet]
+  [ProducesResponseType(StatusCodes.Status200OK)]
   public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts()
   {
     var spec = new ProductsWithTypesAndBrandsSpecification();
@@ -41,21 +43,27 @@ public class ProductsController : BaseApiController
   }
 
   [HttpGet("{id}")]
+  [ProducesResponseType(StatusCodes.Status200OK)]
+  [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
   public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id)
   {
     var spec = new ProductsWithTypesAndBrandsSpecification(id);
     var product = await _productsRepository.GetEntityWithSpec(spec);
 
+    if (product == null) return NotFound(new ApiResponse(404));
+
     return _mapper.Map<Product, ProductToReturnDto>(product);
   }
 
   [HttpGet("brands")]
+  [ProducesResponseType(StatusCodes.Status200OK)]
   public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
   {
     return Ok(await _productBrandRepository.ListAllAsync());
   }
 
   [HttpGet("types")]
+  [ProducesResponseType(StatusCodes.Status200OK)]
   public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
   {
     return Ok(await _productTypeRepository.ListAllAsync());

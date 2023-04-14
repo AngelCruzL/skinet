@@ -14,6 +14,7 @@ public class BuggyController : BaseApiController
   }
 
   [HttpGet("notfound")]
+  [ProducesResponseType(typeof(ApiResponse), 404)]
   public ActionResult GetNotFoundRequest()
   {
     var thing = _context.Products.Find(42);
@@ -23,6 +24,7 @@ public class BuggyController : BaseApiController
   }
 
   [HttpGet("servererror")]
+  [ProducesResponseType(typeof(ApiResponse), 500)]
   public ActionResult GetServerError()
   {
     var thing = _context.Products.Find(42);
@@ -31,12 +33,14 @@ public class BuggyController : BaseApiController
   }
 
   [HttpGet("badrequest")]
+  [ProducesResponseType(typeof(ApiResponse), 400)]
   public ActionResult GetBadRequest()
   {
     return BadRequest(new ApiResponse(400));
   }
 
   [HttpGet("badrequest/{id}")]
+  [ProducesResponseType(typeof(ApiResponse), 400)]
   public ActionResult GetNotFoundRequest(int id)
   {
     return Ok();
