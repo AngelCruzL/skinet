@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 
-import { Product } from '@shared/models';
+import { Product } from '@core/models';
 import { ShopService } from '@shop/services/shop.service';
 
 @Component({
