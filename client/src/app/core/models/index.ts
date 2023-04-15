@@ -1,2 +1,4 @@
-export * from 'src/app/core/models/product';
-export * from 'src/app/core/models/pagination';
+export * from './product';
+export * from './pagination';
+export * from './product-type';
+export * from './product-brand';
