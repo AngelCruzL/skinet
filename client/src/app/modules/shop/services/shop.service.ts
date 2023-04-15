@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '@env/environment';
@@ -17,10 +17,19 @@ export class ShopService {
   #http = inject(HttpClient);
   #baseUrl = environment.apiUrl + '/products';
 
-  getProducts(): Observable<Pagination<Product[]>> {
-    return this.#http.get<Pagination<Product[]>>(
-      `${this.#baseUrl}?pageSize=50`
-    );
+  getProducts(
+    productBrandId?: number,
+    productTypeId?: number
+  ): Observable<Pagination<Product[]>> {
+    let params = new HttpParams();
+
+    if (productBrandId)
+      params = params.append('brandId', productBrandId.toString());
+
+    if (productTypeId)
+      params = params.append('typeId', productTypeId.toString());
+
+    return this.#http.get<Pagination<Product[]>>(this.#baseUrl, { params });
   }
 
   getProductBrands(): Observable<ProductBrand[]> {

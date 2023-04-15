@@ -4,17 +4,21 @@
       <h5 class="text-warning ms-3">Brands</h5>
       <ul class="list-group my-3">
         <li
+          (click)="onProductBrandSelected(brand.id)"
           *ngFor="let brand of productBrands"
+          [class.active]="brand.id === productBrandIdSelected"
           [value]="brand.id"
           class="list-group-item"
         >
           {{brand.name}}</li>
       </ul>
 
-      <h5 class="text-warning ms-3">Types</h5>
+      <h5 class="text-warning mt-5 ms-3">Types</h5>
       <ul class="list-group my-3">
         <li
+          (click)="onProductTypeSelected(type.id)"
           *ngFor="let type of productTypes"
+          [class.active]="type.id === productTypeIdSelected"
           [value]="type.id"
           class="list-group-item"
         >
