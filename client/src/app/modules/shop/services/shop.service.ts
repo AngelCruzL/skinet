@@ -3,12 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '@env/environment';
-import {
-  Pagination,
-  Product,
-  ProductBrand,
-  ProductType,
-} from 'src/app/core/models';
+import { Pagination, Product, ProductBrand, ProductType } from '@core/models';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +14,8 @@ export class ShopService {
 
   getProducts(
     productBrandId?: number,
-    productTypeId?: number
+    productTypeId?: number,
+    sortOption?: string
   ): Observable<Pagination<Product[]>> {
     let params = new HttpParams();
 
@@ -28,6 +24,8 @@ export class ShopService {
 
     if (productTypeId)
       params = params.append('typeId', productTypeId.toString());
+
+    if (sortOption) params = params.append('sort', sortOption);
 
     return this.#http.get<Pagination<Product[]>>(this.#baseUrl, { params });
   }
