@@ -8,6 +8,7 @@ import { ShopModule } from '@shop/shop.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     SharedModule,
     ShopModule,
+    PaginationModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
