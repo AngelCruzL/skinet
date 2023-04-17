@@ -19,7 +19,8 @@ export class ShopService {
   #baseUrl = environment.apiUrl + '/products';
 
   getProducts(shopParams: ShopParams): Observable<Pagination<Product[]>> {
-    const { brandId, typeId, sort, itemsPerPage, pageNumber } = shopParams;
+    const { brandId, typeId, sort, itemsPerPage, pageNumber, searchParam } =
+      shopParams;
     let params = new HttpParams();
 
     if (brandId > 0) params = params.append('brandId', brandId.toString());
@@ -28,6 +29,8 @@ export class ShopService {
     params = params.append('sort', sort);
     params = params.append('pageNumber', pageNumber.toString());
     params = params.append('itemsPerPage', itemsPerPage.toString());
+
+    if (searchParam) params = params.append('search', searchParam);
 
     return this.#http.get<Pagination<Product[]>>(this.#baseUrl, { params });
   }
