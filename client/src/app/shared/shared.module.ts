@@ -13,6 +13,11 @@ import { PaginationHeaderComponent } from './components/pagination-header/pagina
     PaginationHeaderComponent,
   ],
   imports: [CommonModule, PaginationModule.forRoot()],
-  exports: [NavbarComponent, PaginationModule, PaginationHeaderComponent],
+  exports: [
+    NavbarComponent,
+    PaginationModule,
+    PaginationHeaderComponent,
+    PaginationComponent,
+  ],
 })
 export class SharedModule {}

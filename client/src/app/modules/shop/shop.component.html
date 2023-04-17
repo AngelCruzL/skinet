@@ -56,17 +56,11 @@
       </div>
 
       <div class="d-flex justify-content-center">
-        <pagination
+        <app-pagination
           (pageChanged)="onPageChanged($event)"
-          [boundaryLinks]="true"
           [itemsPerPage]="shopParams.itemsPerPage"
-          [maxSize]="10"
-          [totalItems]="totalItemsCount"
-          firstText="&laquo;"
-          lastText="&raquo;"
-          nextText="&rsaquo;"
-          previousText="&lsaquo;">
-        </pagination>
+          [totalItemsCount]="totalItemsCount"
+        ></app-pagination>
       </div>
     </section>
   </div>
