@@ -30,10 +30,10 @@ export class ShopComponent implements OnInit {
 
   getProducts(): void {
     this.#shopService.getProducts(this.shopParams).subscribe({
-      next: ({ data, pageSize, pageIndex, count }) => {
+      next: ({ data, pageNumber, itemsPerPage, count }) => {
         this.products = data;
-        this.shopParams.pageNumber = pageIndex;
-        this.shopParams.pageSize = pageSize;
+        this.shopParams.pageNumber = pageNumber;
+        this.shopParams.itemsPerPage = itemsPerPage;
         this.totalItemsCount = count;
       },
       error: error => console.log(error),
@@ -69,5 +69,12 @@ export class ShopComponent implements OnInit {
   onSortSelected(event: any): void {
     this.shopParams.sort = event.target.value;
     this.getProducts();
+  }
+
+  onPageChanged(event: any): void {
+    if (this.shopParams.pageNumber !== event.page) {
+      this.shopParams.pageNumber = event.page;
+      this.getProducts();
+    }
   }
 }
