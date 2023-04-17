@@ -58,11 +58,13 @@ export class ShopComponent implements OnInit {
 
   onProductBrandSelected(productBrandId: number): void {
     this.shopParams.brandId = productBrandId;
+    this.shopParams.pageNumber = 1;
     this.getProducts();
   }
 
   onProductTypeSelected(productTypeId: number): void {
     this.shopParams.typeId = productTypeId;
+    this.shopParams.pageNumber = 1;
     this.getProducts();
   }
 
