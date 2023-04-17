@@ -1,5 +1,13 @@
 <div *ngIf="product" class="card h-100 shadow-sm">
-  <img [src]="product.pictureUrl" alt="{{product.name}}" class="img-fluid bg-info">
+  <img
+    [alt]="product.name"
+    [ngSrc]="product.pictureUrl"
+    [title]="product.name"
+    class="img-fluid bg-info"
+    height="310"
+    priority
+    width="310"
+  >
 
   <div class="card-body d-flex flex-column">
     <a class="text-decoration-none" href="">
@@ -12,7 +20,12 @@
 
     <div class="btn-group mt-auto">
       <button class="btn btn-outline-secondary fa fa-shopping-cart me-2"></button>
-      <button class="btn btn-outline-secondary">View</button>
+      <button
+        [routerLink]="['/shop', product.id]"
+        class="btn btn-outline-secondary"
+      >
+        View
+      </button>
     </div>
   </div>
 </div>

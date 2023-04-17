@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -12,7 +13,13 @@ import { PaginationHeaderComponent } from './components/pagination-header/pagina
     PaginationComponent,
     PaginationHeaderComponent,
   ],
-  imports: [CommonModule, PaginationModule.forRoot()],
+  imports: [
+    CommonModule,
+    PaginationModule.forRoot(),
+    RouterLink,
+    RouterLinkActive,
+    NgOptimizedImage,
+  ],
   exports: [
     NavbarComponent,
     PaginationModule,
