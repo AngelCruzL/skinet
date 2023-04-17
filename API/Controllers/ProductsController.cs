@@ -45,8 +45,8 @@ public class ProductsController : BaseApiController
 
     return Ok(
       new Pagination<ProductToReturnDto>(
-        productParams.PageIndex,
-        productParams.PageSize,
+        productParams.PageNumber,
+        productParams.ItemsPerPage,
         totalItems,
         data
       )
