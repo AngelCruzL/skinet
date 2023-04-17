@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestErrorComponent } from 'src/app/core/components/test-error/test-error.component';
+import { TestErrorComponent } from '@core/pages/test-error/test-error.component';
 
 describe('TestErrorComponent', () => {
   let component: TestErrorComponent;

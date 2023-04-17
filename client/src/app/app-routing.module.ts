@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TestErrorComponent } from '@core/components/test-error/test-error.component';
+import { TestErrorComponent } from '@core/pages/test-error/test-error.component';
+import { NotFoundComponent } from '@core/pages/not-found/not-found.component';
+import { ServerErrorComponent } from '@core/pages/server-error/server-error.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,14 @@ const routes: Routes = [
   {
     path: 'test-error',
     component: TestErrorComponent,
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent,
+  },
+  {
+    path: 'server-error',
+    component: ServerErrorComponent,
   },
   {
     path: '**',
