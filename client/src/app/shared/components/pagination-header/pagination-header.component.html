@@ -1,0 +1,11 @@
+<header>
+  <p *ngIf="totalItemsCount > 0" class="m-0">
+    Showing
+    <strong>
+      {{displayFirstPageItem()}} -
+      {{displayLastPageItem()}}
+    </strong>
+    of
+    <strong>{{totalItemsCount}}</strong> Results</p>
+  <p *ngIf="totalItemsCount === 0">There are <strong>0</strong> results for this filter</p>
+</header>

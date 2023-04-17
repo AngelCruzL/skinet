@@ -35,6 +35,20 @@
     </section>
 
     <section class="col-9">
+      <div class="d-flex justify-content-between align-items-end mb-3">
+        <app-pagination-header
+          [itemsPerPage]="shopParams.itemsPerPage"
+          [pageNumber]="shopParams.pageNumber"
+          [totalItemsCount]="totalItemsCount"
+        ></app-pagination-header>
+
+        <div class="d-flex">
+          <input class="form-control me-2" placeholder="Search" type="text">
+          <button class="btn btn-outline-primary mx-2">Search</button>
+          <button class="btn btn-outline-success">Reset</button>
+        </div>
+      </div>
+
       <div class="row row-cols-3 g-3 mb-4">
         <div *ngFor="let product of products" class="col">
           <app-product-item [product]="product"></app-product-item>
