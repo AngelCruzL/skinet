@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 
-import { Product, ProductBrand, ProductType } from '@core/models';
+import { Product, ProductBrand, ProductType, ShopParams } from '@core/models';
 import { ShopService } from '@shop/services/shop.service';
 
 @Component({
@@ -12,9 +12,8 @@ export class ShopComponent implements OnInit {
   products: Product[] = [];
   productBrands: ProductBrand[] = [];
   productTypes: ProductType[] = [];
-  productBrandIdSelected = 0;
-  productTypeIdSelected = 0;
-  sortSelectedOption = 'name';
+  shopParams = new ShopParams();
+  totalItemsCount = 0;
   sortOptions = [
     { name: 'Alphabetical', value: 'name' },
     { name: 'Price: Low to High', value: 'priceAsc' },
@@ -30,16 +29,15 @@ export class ShopComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.#shopService
-      .getProducts(
-        this.productBrandIdSelected,
-        this.productTypeIdSelected,
-        this.sortSelectedOption
-      )
-      .subscribe({
-        next: response => (this.products = response.data),
-        error: error => console.log(error),
-      });
+    this.#shopService.getProducts(this.shopParams).subscribe({
+      next: ({ data, pageSize, pageIndex, count }) => {
+        this.products = data;
+        this.shopParams.pageNumber = pageIndex;
+        this.shopParams.pageSize = pageSize;
+        this.totalItemsCount = count;
+      },
+      error: error => console.log(error),
+    });
   }
 
   getProductBrands(): void {
@@ -59,17 +57,17 @@ export class ShopComponent implements OnInit {
   }
 
   onProductBrandSelected(productBrandId: number): void {
-    this.productBrandIdSelected = productBrandId;
+    this.shopParams.brandId = productBrandId;
     this.getProducts();
   }
 
   onProductTypeSelected(productTypeId: number): void {
-    this.productTypeIdSelected = productTypeId;
+    this.shopParams.typeId = productTypeId;
     this.getProducts();
   }
 
   onSortSelected(event: any): void {
-    this.sortSelectedOption = event.target.value;
+    this.shopParams.sort = event.target.value;
     this.getProducts();
   }
 }
