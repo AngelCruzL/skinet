@@ -9,7 +9,7 @@ export class NavbarLinksService {
   #navbarLinks: NavbarLink[] = [
     { path: '/', label: 'Home' },
     { path: '/shop', label: 'Shop' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/test-error', label: 'Errors' },
   ];
 
   constructor() {}

@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { TestErrorComponent } from '@core/components/test-error/test-error.component';
+
 @NgModule({
-  declarations: [],
+  declarations: [TestErrorComponent],
   imports: [CommonModule],
-  exports: [],
+  exports: [TestErrorComponent],
 })
 export class CoreModule {}
