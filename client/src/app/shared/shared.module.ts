@@ -6,6 +6,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { PaginationHeaderComponent } from './components/pagination-header/pagination-header.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,10 @@ import { PaginationHeaderComponent } from './components/pagination-header/pagina
     RouterLink,
     RouterLinkActive,
     NgOptimizedImage,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
   ],
   exports: [
     NavbarComponent,
