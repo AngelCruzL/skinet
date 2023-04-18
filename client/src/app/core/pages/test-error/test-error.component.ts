@@ -1,14 +1,18 @@
 import { Component, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { environment } from '@env/environment';
+import { CommonModule } from '@angular/common';
 
 @Component({
+  standalone: true,
+  imports: [HttpClientModule, CommonModule],
   selector: 'app-test-error',
   templateUrl: './test-error.component.html',
   styleUrls: ['./test-error.component.scss'],
 })
 export class TestErrorComponent {
+  validationErrors: string[] = [];
   #baseUrl = environment.apiUrl;
   #http = inject(HttpClient);
 
@@ -36,7 +40,10 @@ export class TestErrorComponent {
   get400ValidationError() {
     this.#http.get(`${this.#baseUrl}/products/five`).subscribe({
       next: response => console.log(response),
-      error: error => console.log(error),
+      error: error => {
+        console.log(error);
+        this.validationErrors = error.errors;
+      },
     });
   }
 }

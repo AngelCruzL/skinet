@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TestErrorComponent } from '@core/pages/test-error/test-error.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ServerErrorComponent } from './pages/server-error/server-error.component';
+import { NotFoundComponent } from '@core/pages/not-found/not-found.component';
 
 @NgModule({
-  declarations: [TestErrorComponent, NotFoundComponent, ServerErrorComponent],
+  declarations: [NotFoundComponent],
   imports: [CommonModule],
-  exports: [TestErrorComponent],
+  exports: [],
 })
 export class CoreModule {}
