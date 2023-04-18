@@ -7,16 +7,12 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 const routes: Routes = [
   {
     path: '',
-    children: [
-      {
-        path: '',
-        component: ShopComponent,
-      },
-      {
-        path: ':id',
-        component: ProductDetailComponent,
-      },
-    ],
+    component: ShopComponent,
+  },
+  {
+    path: ':id',
+    component: ProductDetailComponent,
+    data: { breadcrumb: { alias: 'productDetail' } },
   },
 ];
 
