@@ -8,6 +8,7 @@ import { ServerErrorComponent } from '@core/pages/server-error/server-error.comp
 const routes: Routes = [
   {
     path: '',
+    data: { breadcrumb: 'Home' },
     loadChildren: () =>
       import('./modules/home/home.module').then(m => m.HomeModule),
   },
