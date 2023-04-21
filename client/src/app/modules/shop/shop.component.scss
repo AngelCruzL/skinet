@@ -1,3 +1,11 @@
 li:hover {
   cursor: pointer;
+
+  &:not(.active) {
+    background-color: #dee2e6;
+  }
+}
+
+h5 {
+  color: #e95420;
 }
