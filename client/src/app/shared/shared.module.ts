@@ -5,6 +5,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
@@ -30,6 +31,7 @@ import { SectionHeaderComponent } from './components/section-header/section-head
     }),
     BreadcrumbModule,
     NgxSpinnerModule,
+    CarouselModule,
   ],
   exports: [
     NavbarComponent,
@@ -38,6 +40,7 @@ import { SectionHeaderComponent } from './components/section-header/section-head
     PaginationComponent,
     SectionHeaderComponent,
     NgxSpinnerModule,
+    CarouselModule,
   ],
 })
 export class SharedModule {}
