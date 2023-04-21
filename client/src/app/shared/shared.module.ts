@@ -4,6 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { BreadcrumbModule } from 'xng-breadcrumb';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
@@ -28,6 +29,7 @@ import { SectionHeaderComponent } from './components/section-header/section-head
       preventDuplicates: true,
     }),
     BreadcrumbModule,
+    NgxSpinnerModule,
   ],
   exports: [
     NavbarComponent,
@@ -35,6 +37,7 @@ import { SectionHeaderComponent } from './components/section-header/section-head
     PaginationHeaderComponent,
     PaginationComponent,
     SectionHeaderComponent,
+    NgxSpinnerModule,
   ],
 })
 export class SharedModule {}

@@ -7,6 +7,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { SharedModule } from '@shared/shared.module';
 import { ShopModule } from '@shop/shop.module';
 import { ErrorInterceptor } from '@core/interceptors/error.interceptor';
+import { LoadingInterceptor } from '@core/interceptors/loading.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { AppComponent } from './app.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
