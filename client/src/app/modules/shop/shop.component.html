@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div *ngIf="displaySideBar()" class="row">
     <section class="col-3">
       <h5 class="ms-3">Sort</h5>
       <select (change)="onSortSelected($event)" class="form-select mb-5">

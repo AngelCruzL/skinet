@@ -98,4 +98,8 @@ export class ShopComponent implements OnInit {
     this.shopParams = new ShopParams();
     this.getProducts();
   }
+
+  displaySideBar(): boolean {
+    return this.productTypes.length > 0 && this.productBrands.length > 0;
+  }
 }

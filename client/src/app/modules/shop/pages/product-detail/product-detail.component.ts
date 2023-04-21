@@ -19,6 +19,7 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProduct();
+    this.#breadcrumbService.set('@productDetail', ' ');
   }
 
   loadProduct(): void {
